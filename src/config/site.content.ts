@@ -13,8 +13,8 @@ export const siteContent = {
     description:
       'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
     primaryCta: {
-      label: 'Read latest stories',
-      href: '/articles',
+      label: 'Browse classifieds',
+      href: '/classifieds',
     },
     secondaryCta: {
       label: 'Explore visuals',
@@ -66,8 +66,8 @@ export const siteContent = {
     description:
       'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
     primaryCta: {
-      label: 'Get Started Free',
-      href: '/register',
+      label: 'Browse classifieds',
+      href: '/classifieds',
     },
     secondaryCta: {
       label: 'Contact Sales',
