@@ -72,11 +72,11 @@ export default async function SearchPage({
 
   return (
     <PageShell
-      title="Search"
+      title="Search classifieds"
       description={
         query
-          ? `Results for "${query}"`
-          : "Browse the latest posts across every task."
+          ? `Results for "${query}" across live and cached listings.`
+          : "Search titles, descriptions, and tags across classified ads. Leave the box empty to preview the newest posts."
       }
       actions={
         <form action="/search" className="flex w-full gap-2 sm:w-auto">
@@ -88,7 +88,7 @@ export default async function SearchPage({
             <Input
               name="q"
               defaultValue={query}
-              placeholder="Search across tasks..."
+              placeholder="Try “bike”, “studio lease”, “weekend gig”…"
               className="h-11 pl-9"
             />
           </div>

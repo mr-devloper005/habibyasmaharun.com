@@ -22,7 +22,7 @@ export default function CareersPage() {
   return (
     <PageShell
       title="Careers"
-      description={`Help us build the future of community-driven publishing at ${SITE_CONFIG.name}.`}
+      description={`Help us build the next generation of local classifieds—fast, trustworthy, and refreshingly simple—at ${SITE_CONFIG.name}.`}
       actions={
         <Button asChild>
           <Link href="/contact">Apply Now</Link>
@@ -32,7 +32,7 @@ export default function CareersPage() {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-4">
           {roles.map((role) => (
-            <Card key={role.title} className="border-border bg-card">
+            <Card key={role.title} className="border-[#e9e0ff] bg-white shadow-sm">
               <CardContent className="p-6">
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge variant="secondary">{role.level}</Badge>
@@ -47,15 +47,15 @@ export default function CareersPage() {
             </Card>
           ))}
         </div>
-        <Card className="border-border bg-card">
+        <Card className="border-[#e9e0ff] bg-white shadow-sm">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-foreground">Why {SITE_CONFIG.name}</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              We are building a product that helps people discover and share the best knowledge on the web.
+              We are building trustworthy classifieds infrastructure—fast search, safer meetups, and tooling that respects both buyers and sellers.
             </p>
             <div className="mt-4 space-y-2 text-sm text-muted-foreground">
               {benefits.map((benefit) => (
-                <div key={benefit} className="rounded-md border border-border bg-secondary/40 px-3 py-2">
+                <div key={benefit} className="rounded-xl border border-[#ece6ff] bg-[#faf7ff] px-3 py-2">
                   {benefit}
                 </div>
               ))}
