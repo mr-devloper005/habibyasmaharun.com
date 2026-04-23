@@ -2,10 +2,8 @@
 
 import { useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
-  ArrowLeft,
   Save,
   Image as ImageIcon,
   X,
@@ -185,7 +183,7 @@ export default function NewAdPage() {
     const stored = loadFromStorage<ClassifiedAd[]>(storageKeys.ads, [])
     saveToStorage(storageKeys.ads, [ad, ...stored])
     await new Promise((resolve) => setTimeout(resolve, 800))
-    router.push("/dashboard/ads")
+    router.push("/")
   }
 
   return (
@@ -194,19 +192,12 @@ export default function NewAdPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/dashboard">
-                <ArrowLeft className="h-5 w-5" />
-              </Link>
-            </Button>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">Post New Ad</h1>
-              <p className="text-sm text-muted-foreground">
-                Create a classified ad to sell your items
-              </p>
-            </div>
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">Post New Ad</h1>
+            <p className="text-sm text-muted-foreground">
+              Create a classified ad to sell your items
+            </p>
           </div>
           <div className="flex gap-3">
             <Button variant="outline" onClick={handleSaveDraft} disabled={isSaving}>
