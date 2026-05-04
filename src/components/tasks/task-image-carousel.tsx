@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ContentImage } from "@/components/shared/content-image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageModal } from "@/components/shared/image-modal";
 
 export function TaskImageCarousel({ images }: { images: string[] }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -13,6 +14,18 @@ export function TaskImageCarousel({ images }: { images: string[] }) {
   });
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState<string | null>(null);
+
+  const openModal = (imageUrl: string) => {
+    setCurrentImage(imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setCurrentImage(null);
+  };
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -31,11 +44,17 @@ export function TaskImageCarousel({ images }: { images: string[] }) {
 
   return (
     <div className="relative overflow-hidden rounded-3xl border border-border bg-muted">
+      <ImageModal
+        isOpen={isModalOpen}
+        imageUrl={currentImage || images[0]}
+        alt="Gallery image"
+        onClose={closeModal}
+      />
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {images.map((src, index) => (
             <div key={`${src}-${index}`} className="min-w-0 flex-[0_0_100%]">
-              <div className="relative aspect-[16/10] w-full">
+              <div className="relative aspect-[16/10] w-full cursor-pointer" onClick={() => openModal(src)}>
                 <ContentImage
                   src={src}
                   alt={`Gallery image ${index + 1} for verified business listing`}
