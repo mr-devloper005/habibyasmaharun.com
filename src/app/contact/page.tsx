@@ -70,6 +70,8 @@ const footerPills = [
   { name: 'Browse ads', href: '/classifieds' },
 ]
 
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@example.com'
+
 export default function ContactPage() {
   if (CONTACT_PAGE_OVERRIDE_ENABLED) {
     return <ContactPageOverride />
@@ -125,6 +127,13 @@ export default function ContactPage() {
                   {item.name}
                 </Link>
               ))}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex items-center gap-2 rounded-full border border-[#e9e0ff] bg-white px-4 py-2 text-sm font-semibold text-[#1a1a1a] shadow-sm hover:bg-[#faf7ff]"
+              >
+                <Mail className="h-4 w-4" />
+                Email us
+              </a>
             </div>
             <div className="mt-8 space-y-4">
               {lanes.map((lane) => (
