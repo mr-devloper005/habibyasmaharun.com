@@ -3,9 +3,7 @@ import { PageShell } from "@/components/shared/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowRight, MapPin, ShieldCheck, Sparkles, Tag, Users, Zap } from "lucide-react";
-import { mockTeamMembers } from "@/data/mock-data";
+import { ArrowRight, MapPin, ShieldCheck, Sparkles, Tag, Zap } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const highlights = [
@@ -155,37 +153,6 @@ export default function AboutPage() {
         </Button>
       </div>
 
-      <div className="mt-14">
-        <div className="mb-6 flex items-center gap-2">
-          <Users className="h-5 w-5 text-[#A163F7]" />
-          <h2 className="text-xl font-semibold text-[#1a1a1a]">People behind the product</h2>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {mockTeamMembers.map((member) => (
-            <Card key={member.id} className="border-[#e9e0ff] bg-white shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3">
-                  <Avatar className="h-12 w-12 border border-[#ece6ff]">
-                    <AvatarImage src={member.avatar} alt={member.name} />
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-semibold text-[#1a1a1a]">{member.name}</p>
-                    <p className="text-xs text-[#7c6f96]">{member.role}</p>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-[#5b5568]">{member.bio}</p>
-                <p className="mt-3 text-xs text-[#a39ab8]">{member.location}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-6">
-          <Button variant="outline" asChild className="rounded-full border-[#e9e0ff]">
-            <Link href="/team">Meet the full team</Link>
-          </Button>
-        </div>
-      </div>
-    </PageShell>
+      </PageShell>
   );
 }

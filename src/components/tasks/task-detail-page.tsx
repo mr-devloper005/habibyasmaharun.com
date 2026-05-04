@@ -1,7 +1,6 @@
-import { ContentImage } from "@/components/shared/content-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Globe, Phone, Tag, Mail } from "lucide-react";
+import { MapPin, Globe, Phone, Mail, Tag } from "lucide-react";
 import { NavbarShell } from "@/components/shared/navbar-shell";
 import { Footer } from "@/components/shared/footer";
 import { TaskPostCard } from "@/components/shared/task-post-card";
@@ -12,7 +11,7 @@ import { SITE_CONFIG, getTaskConfig, type TaskKey } from "@/lib/site-config";
 import type { SitePost } from "@/lib/site-connector";
 import { TaskImageCarousel } from "@/components/tasks/task-image-carousel";
 import { cn } from "@/lib/utils";
-import { ArticleComments } from "@/components/tasks/article-comments";
+import { ArticleSection } from "@/components/tasks/article-section";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
 import { RichContent, formatRichHtml } from "@/components/shared/rich-content";
 import { getFactoryState } from "@/design/factory/get-factory-state";
@@ -267,45 +266,17 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
         >
           <div className={cn(isClassified ? "space-y-8" : "")}>
             {isArticle ? (
-              <div className="mx-auto w-full max-w-4xl space-y-6">
-                <h1 className="text-4xl font-semibold leading-tight text-foreground">
-                  {post.title}
-                </h1>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                  <span>By {articleAuthor}</span>
-                  {articleDate ? <span>{articleDate}</span> : null}
-                  <Badge variant="secondary" className="inline-flex items-center gap-1">
-                    <Tag className="h-3.5 w-3.5" />
-                    {category}
-                  </Badge>
-                </div>
-                {postTags.length ? (
-                  <div className="flex flex-wrap gap-2">
-                    {postTags.map((tag) => (
-                      <Badge key={tag} variant="outline">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                ) : null}
-                {articleSummary ? (
-                  <p className="text-base leading-7 text-muted-foreground">{articleSummary}</p>
-                ) : null}
-                {images[0] ? (
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border bg-muted">
-                    <ContentImage
-                      src={images[0]}
-                      alt={`${post.title} featured image`}
-                      fill
-                      className="object-cover"
-                      intrinsicWidth={1600}
-                      intrinsicHeight={900}
-                    />
-                  </div>
-                ) : null}
-                <RichContent html={articleHtml} className="leading-8 prose-p:my-6 prose-h2:my-8 prose-h3:my-6 prose-ul:my-6" />
-                <ArticleComments slug={post.slug} />
-              </div>
+              <ArticleSection
+                title={post.title}
+                articleAuthor={articleAuthor}
+                articleDate={articleDate}
+                category={category}
+                postTags={postTags}
+                articleSummary={articleSummary}
+                images={images}
+                articleHtml={articleHtml}
+                slug={post.slug}
+              />
             ) : null}
 
             {!isArticle ? (
