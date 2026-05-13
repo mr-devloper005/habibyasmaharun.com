@@ -98,9 +98,6 @@ export default function HelpPage() {
                 Send a note with screenshots or links—we route classifieds questions to the right teammate faster when context is
                 clear.
               </p>
-              <Button asChild className="mt-5 w-full rounded-full bg-[#1a1a1a] text-white hover:bg-black sm:w-auto">
-                <Link href="/contact">Email the team</Link>
-              </Button>
             </CardContent>
           </Card>
 
