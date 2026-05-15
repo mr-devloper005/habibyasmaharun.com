@@ -168,7 +168,7 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
             <div>
               <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${tone.badge}`}>
                 <Sparkles className="h-3.5 w-3.5" />
-                Smart local classifieds
+                
               </span>
               <h1 className={`mt-6 max-w-3xl text-5xl font-semibold tracking-[-0.06em] sm:text-6xl ${tone.title}`}>
                 Find deals nearby,{' '}
